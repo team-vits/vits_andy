@@ -13,3 +13,23 @@ services:
       - ./app:/app # mirrors the content in both directions
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=devuser
+      - DB_PASS=localdb
+    depends_on:
+      - db
+
+  # sets the local development db
+  db:
+    image: mysql:oracle
+    volumes:
+      - dev-db-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=devdb
+      - MYSQL_USER=devuser
+      - MYSQL_ROOT_PASSWORD=localdb
+
+volumes:
+  dev-db-data:

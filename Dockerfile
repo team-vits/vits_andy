@@ -1,5 +1,5 @@
 # very lightweight fast image
-FROM python:3.9-alpine3.13
+FROM python:3.9-buster
 LABEL maintainer="Andy Lopez"
 
 # tells python that to unbuffer the output = faster response
@@ -25,9 +25,9 @@ RUN python -m venv /py && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user
+        db-user
 
 # run cmd from the venv
 ENV PATH="/py/bin:$PATH"
 
-USER django-user
+USER db-user
