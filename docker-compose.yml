@@ -12,12 +12,14 @@ services:
     volumes:
       - ./app:/app # mirrors the content in both directions
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
       - DB_USER=devuser
       - DB_PASS=localdb
+      - DEBUG=1
     depends_on:
       - db
 
@@ -29,7 +31,9 @@ services:
     environment:
       - MYSQL_DATABASE=devdb
       - MYSQL_USER=devuser
-      - MYSQL_ROOT_PASSWORD=localdb
+      - MYSQL_PASSWORD=localdb
+    ports:
+      - "3306:3306"
 
 volumes:
   dev-db-data:
