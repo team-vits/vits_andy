@@ -25,7 +25,7 @@ services:
 
   # sets the local development db
   db:
-    image: mysql:oracle
+    image: mysql
     volumes:
       - dev-db-data:/var/lib/mysql
     environment:

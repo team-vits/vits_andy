@@ -1,5 +1,5 @@
 # very lightweight fast image
-FROM python:3.9.6-alpine
+FROM python:3
 LABEL maintainer="Andy Lopez"
 
 # tells python that to unbuffer the output = faster response
@@ -19,8 +19,6 @@ ARG DEV=false
 # block cmd instead of running individual to avoid creating img layers
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
-    apk update && apk add mysql-client && \
-    apk add gcc musl-dev mariadb-connector-c-dev && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
         then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
