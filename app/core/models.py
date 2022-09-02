@@ -62,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     signup_time = models.DateTimeField(auto_now=True)
     last_login = models.DateTimeField(auto_now=True)
-    birth_date = models.DateField()
+    #birth_date = models.DateField(default=None, blank=True, null=True)
 
     # city = models.CharField(max_length=255)
     # location = PlainLocationField(based_fields=['city'],
@@ -70,7 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     sex = models.CharField(max_length=30, choices=SEX_CHOICES)
 
     available_workout_days = models.CharField(max_length=10)
-    meals_per_day = models.PositiveSmallIntegerField()
+    #meals_per_day = models.PositiveSmallIntegerField()
 
     objects = UserManager()
 
