@@ -1,6 +1,6 @@
 # very lightweight fast image
 FROM python:3
-LABEL maintainer="Andy Lopez"
+LABEL maintainer="Team ViTS"
 
 # tells python that to unbuffer the output = faster response
 ENV PYTHONUNBUFFERED 1
