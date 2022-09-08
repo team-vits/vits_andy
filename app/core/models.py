@@ -1,6 +1,8 @@
 """
 Database models.
 """
+import uuid
+import os
 from decimal import Decimal
 
 # from location_field.models.plain import PlainLocationField
@@ -53,7 +55,6 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
-
     id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
@@ -106,7 +107,6 @@ class AntrhopometricHistory(models.Model):
     """
     Defines Antrhopometric history records for a user
     """
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -124,7 +124,6 @@ class AntrhopometricHistory(models.Model):
 
 class NutritionalHistory(models.Model):
     """Stores nutritional values history."""
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -152,7 +151,6 @@ PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
 class Food(models.Model):
     """Defines nutritional values of food."""
-
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     enter_by = models.CharField(max_length=5)
@@ -170,7 +168,6 @@ class Ingestion(models.Model):
     """
     Defines ingestion history records for a user
     """
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -185,7 +182,6 @@ class FoodIngestion(models.Model):
     """
     Defines a bridge table relationship between Food and ingestion table
     """
-
     food_id = models.ForeignKey(Food, on_delete=models.CASCADE)
     ingestion_id = models.ForeignKey(Ingestion, on_delete=models.CASCADE)
 
@@ -194,7 +190,6 @@ class NutritionHistory(models.Model):
     """
     Defines nutrition history records for a user
     """
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -227,7 +222,6 @@ class Workouts(models.Model):
     """
     Workouts available
     """
-
     id = models.AutoField(primary_key=True)
     workout_type = models.CharField(max_length=255)
     program_type_id = models.IntegerField(blank=True, null=True)
@@ -237,7 +231,6 @@ class Exercises(models.Model):
     """
     Different types of exercises to perform
     """
-
     id = models.AutoField(primary_key=True)
     exercise_name = models.CharField(max_length=255)
     target_muscle = models.CharField(max_length=255)
@@ -251,7 +244,6 @@ class WorkoutHistory(models.Model):
     """
     Collects Workout history records for a user
     """
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -269,7 +261,6 @@ class ExerciseHistory(models.Model):
     """
     Collects exercise history records for a user
     """
-
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -320,9 +311,7 @@ class WorkoutEvalHistory(models.Model):
     """
     Workout evaluation history
     """
-
     id = models.AutoField(primary_key=True)
-    # should it be this id --------
     workout_id = models.ForeignKey(Workouts, on_delete=models.CASCADE)
 
 
@@ -330,7 +319,6 @@ class EvaluationQuestion(models.Model):
     """
     LIst of questions and score
     """
-
     # where does evaluation id come from?
     id = models.AutoField(primary_key=True)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -342,7 +330,6 @@ class SleepQuestion(models.Model):
     """
     Sleep questions
     """
-
     # is this the right id...
     id = models.AutoField(primary_key=True)
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -354,7 +341,7 @@ class SleepHistory(models.Model):
     """
     Sleep history
     """
-    sleep_history_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
