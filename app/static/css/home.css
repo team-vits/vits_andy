@@ -1,0 +1,12 @@
+body {
+  min-height: 100vh;
+}
+
+.logo {
+  width: 500px;
+  background-color: black;
+}
+
+.main_home_page {
+  background-color: black;
+}
