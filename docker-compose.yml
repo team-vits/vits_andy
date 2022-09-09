@@ -34,7 +34,7 @@ services:
     image: mysql
     container_name: database
     volumes:
-      - ./db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: devdb
       MYSQL_USER: devuser
@@ -49,4 +49,4 @@ services:
       retries: 10
 
 volumes:
-  dev-db-data:
+  db_data:
