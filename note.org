@@ -1,0 +1,14 @@
+* Datos Base
+- edad
+- peso
+- altura
+- perimetro cuello
+- perimetro abdominal
+- perimetro cadera
+- indice cintura cadera ( RCV )
+- indice masa corporal ( IMC )
+- factor de actividad
+
+* Datos Intermedios
+- Basic Metabolic 
+- Lean Body Mass 
