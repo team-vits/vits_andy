@@ -1,8 +1,8 @@
 """
 Database models.
 """
-import uuid
-import os
+# import uuid
+# import os
 from decimal import Decimal
 
 # from location_field.models.plain import PlainLocationField
