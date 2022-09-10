@@ -235,7 +235,7 @@ class Exercises(models.Model):
     exercise_name = models.CharField(max_length=255)
     target_muscle = models.CharField(max_length=255)
     workout_type = models.CharField(max_length=255)
-    video_link = models.CharField(max_length=255)
+    video_link = models.CharField(max_length=255, default='')
     # FileField class FileField(upload_to='',
     # storage=None, max_length=100, **options)
 
