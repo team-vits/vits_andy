@@ -227,7 +227,7 @@ class Workouts(models.Model):
     program_type_id = models.IntegerField(blank=True, null=True)
 
 
-class Exercises(models.Model):
+class Excercises(models.Model):
     """
     Different types of exercises to perform
     """

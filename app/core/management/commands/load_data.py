@@ -1,14 +1,14 @@
 from django.core.management.base import BaseCommand
-from core.models import Exercises
+from core.models import Excercises
 import csv
 
 
-def insert_exercises_data(data: dict) -> None:
-    """Insert data from csv file to exercise table"""
+def insert_excercises_data(data: dict) -> None:
+    """Insert data from csv file to excercise table"""
     for row in data:
         try:
-            exercise = Exercises(**row)
-            exercise.save()
+            excercise = Excercises(**row)
+            excercise.save()
         except Exception as e:
             raise e
 
@@ -21,7 +21,7 @@ class Command(BaseCommand):
     '''
 
     def add_arguments(self, parser):
-        path = '/app/core/management/commands/exercises.csv'
+        path = '/app/core/management/commands/excercises.csv'
         parser.add_argument('--file', default=path)
 
     def handle(self, *args, **options):
@@ -30,7 +30,7 @@ class Command(BaseCommand):
         try:
             with open(path) as csv_file:
                 data = csv.DictReader(csv_file)
-                insert_exercises_data(data)
+                insert_excercises_data(data)
         except FileNotFoundError as e:
             print(f"\033[91m{e}\033[m")
             exit
