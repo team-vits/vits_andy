@@ -1,5 +1,3 @@
-from cgitb import handler
-from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
 from core.models import Exercises
 import csv
@@ -8,27 +6,31 @@ import csv
 def insert_exercises_data(data: dict) -> None:
     """Insert data from csv file to exercise table"""
     for row in data:
-        try: 
+        try:
             exercise = Exercises(**row)
             exercise.save()
         except Exception as e:
-            #print({"ERROR": f"method {insert_excersices_data.__name__}, msg={e}"})
             raise e
 
+
 class Command(BaseCommand):
-    """Django command to wait for database."""
+    """ BaseCommand Wrapper """
+    help = '''
+    Command For Storing csv data into the Django connected
+    database using the provided model.
+    '''
 
     def add_arguments(self, parser):
-        parser.add_argument('-file', nargs='+', type=str, )
+        path = '/app/core/management/commands/exercises.csv'
+        parser.add_argument('--file', default=path)
 
     def handle(self, *args, **options):
         """Entrypoint for command."""
-        file = options['file']
-        if not file:
-            try:
-                with open('/app/core/management/commands/exercises.csv') as csv_file:
-                    data = csv.DictReader(csv_file)
-                    insert_exercises_data(data)
-            except Exception as e:
-               # print({"ERROR": f"method {handle.__name__}, msg={e}"})
-                raise e
+        path = options['file']
+        try:
+            with open(path) as csv_file:
+                data = csv.DictReader(csv_file)
+                insert_exercises_data(data)
+        except FileNotFoundError as e:
+            print(f"\033[91m{e}\033[m")
+            exit
