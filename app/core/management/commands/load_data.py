@@ -4,16 +4,17 @@ from core.models import Exercises, Food
 import csv
 import os
 
-
-
 MODEL_MAPPER = {
     'exercises': Exercises,
     'Food': Food,
 }
 
-
 class Command(BaseCommand):
-    """Django command to wait for database."""
+    """ BaseCommand Wrapper """
+    help = '''
+    Command For Storing csv data into the Django connected
+    database using the provided model.
+    '''
 
     def add_arguments(self, parser):
         parser.add_argument('--file', nargs=1, type=str, required=True, help='Define a specific .csv file to load data to the database')
@@ -50,4 +51,3 @@ class Command(BaseCommand):
         for row in data:
             instance = model(**row)
             instance.save()
-
