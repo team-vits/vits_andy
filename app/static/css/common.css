@@ -5,14 +5,101 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:b
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Roboto;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* ───────────────────────────────── End base styles. ───────────────────────────────── */
-
 :root {
-  --base-color: #ffde59;
+  --base-color-yellow: #ffde59;
+  --base-color-blue: #0b64c5;
+}
+
+/* Top Navigation Bar and menu ───────────────────────────────────────────── */
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  height: 8vh;
+  min-height: 100px;
+
+  background-color: var(--base-color-blue);
+  padding-left: clamp(50px, 2vw, 5vw);
+}
+
+.top-bar .logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: 50px;
+}
+
+.top-bar .logo img {
+  height: 100px;
+  width: 100px;
+}
+
+.top-bar ul {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  list-style-type: none;
+  color: #FFF;
+}
+
+.top-bar ul a {
+  text-decoration: none;
+}
+
+.top-bar ul a:link {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.top-bar ul a:visited {
+  text-decoration: none;
+  color: #AAA;
+}
+
+.top-bar ul a:hover {
+  text-decoration: none;
+  color: #DDD;
+}
+
+.top-bar ul a:active {
+  text-decoration: underline;
+  color: var(--base-color-yellow);
+}
+
+/* Footer Navigation Bar and menu ───────────────────────────────────────────── */
+.footer_container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  gap: 0 2rem;
+
+  height: 8vh;
+  min-height: 100px;
+  background-color: var(--base-color-blue);
+}
+
+.footer_container :not(:last-child){
+  flex: 1;
+}
+
+.footer_container :not(:last-child) p {
+  text-align: left;
+  color: #FFF;
+}
+
+.footer_container :last-of-type {
+  width: 100%;
+  text-align: center;
+  color: #FFF;
 }
