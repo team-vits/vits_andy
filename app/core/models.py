@@ -156,12 +156,12 @@ class Food(models.Model):
     enter_by = models.CharField(max_length=5)
     brand = models.CharField(max_length=255)
     type = models.CharField(max_length=30)
-    carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
-    proteins = models.DecimalField(max_digits=5, decimal_places=2)
-    fats = models.DecimalField(max_digits=5, decimal_places=2)
-    fibers = models.DecimalField(max_digits=5, decimal_places=2)
-    sodium = models.DecimalField(max_digits=5, decimal_places=2)
-    calories = models.DecimalField(max_digits=5, decimal_places=2)
+    carbohydrates = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
+    proteins = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
+    fats = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
+    fibers = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
+    sodium = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
+    calories = models.DecimalField(max_digits=4, decimal_places=1, default=Decimal(0.0))
 
 
 class Ingestion(models.Model):

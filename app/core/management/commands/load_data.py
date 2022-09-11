@@ -6,7 +6,7 @@ import os
 
 MODEL_MAPPER = {
     'exercises': Exercises,
-    'Food': Food,
+    'food': Food,
 }
 
 class Command(BaseCommand):
@@ -24,15 +24,12 @@ class Command(BaseCommand):
         """Entrypoint for command."""
         file = options['file'][0]
         file_path = os.path.join( os.getcwd(), 'load_data', file)
-        if os.path.exists(file_path):
-            model = self.get_model(file)
-            try:
-                with open(file_path) as csv_file:
-                    data = csv.DictReader(csv_file)
-                    self.insert_data(data, model)
-            except Exception as e:
-                raise e
-        else:
+        model = self.get_model(file)
+        try:
+            with open(file_path) as csv_file:
+                data = csv.DictReader(csv_file)
+                self.insert_data(data, model)
+        except FileNotFoundError as e:
             print(f"This file doesn't exist: {file_path}, couldn't load data to database")
             return
 
