@@ -4,11 +4,28 @@
 
 {% block title %}Home Page{% endblock %}
 
-{% block content %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 
+
+{% block content %}
 <main class="main_home_page">
-    <section>
-        <p>Hello</p>
+    <section class="home_section_1">
+        <div>
+            <h1>Vita Training Systems</h1>
+            <p>"Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor! Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate mi sit amet mauris?"</p>
+            <h2>Health As Performance</h2>
+        </div>
+        <div>
+            <img alt="Background1" type="image/jpg" src="{% static 'images/home_page_1.jpg' %}"/>
+        </div>
+    </section>
+    <section class="home_section_2">
+        <h2>Hello</h2>
+    </section>
+    <section class="home_section_3">
+        <h3>Hello</h3>
     </section>
 </main>
 

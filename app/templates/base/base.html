@@ -4,10 +4,22 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <!-- REMOVE IN PRODUCCTION -->
+        {% load livereload_tags %}
+
         {% load static %}
+
+        <!-- REMOVE IN PRODUCCTION -->
+        <script src="http://localhost:35729/livereload.js"></script>
+
         <title>Vits | {% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        {% block static %}
+        {% endblock %}
+
+        <!-- REMOVE IN PRODUCCTION -->
+        {% livereload_script %}
     </head>
 
     <body id="main_body">

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # Utilities
     'django.contrib.humanize',
+    'livereload',
 
     # Local Apps
     'core',
@@ -60,6 +61,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    # Live Reload
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = "app.urls"

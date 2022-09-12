@@ -1,12 +1,20 @@
-body {
-  min-height: 100vh;
-}
-
-.logo {
-  width: 500px;
-  background-color: black;
-}
+@import '/static/common.css';
 
 .main_home_page {
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem 0;
+  /* background-color: var(--base-color-yellow); */
+  padding: 1em;
+}
+
+[class*="home_section"] {
+  display: flex;
+  height: 720px;
+  background-color: var(--base-color-yellow);
+}
+
+.home_section_1 h1, .home_section_1 h2 {
+  color: var(--base-color-blue);
 }
