@@ -1,1 +1,2 @@
 flake8>=5.0.4,<5.1
+django-livereload-server>=0.4
