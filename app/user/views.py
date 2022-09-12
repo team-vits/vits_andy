@@ -14,9 +14,6 @@ def user_view(request):
         form = UserForm(request.POST)
     else:
         form = UserForm()
-    print(dir(list(Excercises.objects.all())[0]))
-    # print(form.fields)
-    # [print(item) for item in dir(form)]
 
     return (render(request, "user.html", {
         'form': form,
