@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+<main class="main_user_page">
+    <section>
+        <h1>USER</h1>
+        <div>
+            <h1>Excercises</h1>
+            {% for index, excercise in excercises %}
+            <p>{{ index }} - {{ excercise.exercise_name }}</p>
+            {% endfor %}
+        </div>
+        <form action="/user" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit"/>
+        </form>
+    </section>
+</main>
+
+{% endblock %}
