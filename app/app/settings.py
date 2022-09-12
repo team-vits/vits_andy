@@ -35,19 +35,21 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
-    'home_page',
-
-    # "rest_framework",
-    # "drf_spectacular",
-
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'location_field.apps.DefaultConfig',
+
+    # Utilities
+    'django.contrib.humanize',
+
+    # Local Apps
+    'core',
+    'home_page',
+    'user'
 ]
 
 MIDDLEWARE = [
