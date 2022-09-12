@@ -1,4 +1,4 @@
-# Custom ignores.
+# Custom Ignores.
 *.org
 */**/migrations/
 .#*

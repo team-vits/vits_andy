@@ -148,6 +148,9 @@ class NutritionalHistory(models.Model):
 # Validators for adherence field
 PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
+# Variable for Macronutrients settings
+MACRO_FIELDS = {'max_digits': 4, 'decimal_places': 1, 'default': Decimal(0.0)}
+
 
 class Food(models.Model):
     """Defines nutritional values of food."""
@@ -156,12 +159,12 @@ class Food(models.Model):
     enter_by = models.CharField(max_length=5)
     brand = models.CharField(max_length=255)
     type = models.CharField(max_length=30)
-    carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
-    proteins = models.DecimalField(max_digits=5, decimal_places=2)
-    fats = models.DecimalField(max_digits=5, decimal_places=2)
-    fibers = models.DecimalField(max_digits=5, decimal_places=2)
-    sodium = models.DecimalField(max_digits=5, decimal_places=2)
-    calories = models.DecimalField(max_digits=5, decimal_places=2)
+    carbohydrates = models.DecimalField(**MACRO_FIELDS)
+    proteins = models.DecimalField(**MACRO_FIELDS)
+    fats = models.DecimalField(**MACRO_FIELDS)
+    fibers = models.DecimalField(**MACRO_FIELDS)
+    sodium = models.DecimalField(**MACRO_FIELDS)
+    calories = models.DecimalField(**MACRO_FIELDS)
 
 
 class Ingestion(models.Model):
