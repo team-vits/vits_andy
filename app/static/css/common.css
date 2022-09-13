@@ -13,8 +13,8 @@ html {
 }
 
 :root {
-  --base-color-yellow: #ffde59;
-  --base-color-blue: #0b64c5;
+  --base-color-yellow: #FFDE59;
+  --base-color-blue: #0B64C5;
 }
 
 /* Top Navigation Bar and menu ───────────────────────────────────────────── */
@@ -62,7 +62,7 @@ html {
 
 .top-bar ul a:visited {
   text-decoration: none;
-  color: #AAA;
+  color: #CCC;
 }
 
 .top-bar ul a:hover {
