@@ -1,88 +1,88 @@
 name,enter_by,brand,type,proteins,fats,carbohydrates,fibers,sodium,calories
-Lomo de cerdo magro,Admin,Generic,Proteinas,21.0,3.5,0.0,0.0,0.0,0.0
-Lomo de res magro,Admin,Generic,Proteinas,21.0,8.8,0.0,0.0,0.0,0.0
-Tilapia,Admin,Generic,Proteinas,20.0,1.7,0.0,0.0,0.0,0.0
-Trucha,Admin,Generic,Proteinas,19.0,6.0,0.0,0.0,0.0,0.0
-Atún en agua (lata),Admin,Generic,Proteinas,25.5,1.0,0.0,0.0,0.0,0.0
-Filete de atún ,Admin,Generic,Proteinas,26.0,6.0,0.0,0.0,0.0,0.0
-Filete de salmón,Admin,Generic,Proteinas,22.0,7.0,0.0,0.0,0.0,0.0
-Huevo ,Admin,Generic,Proteinas,12.5,10.0,0.0,0.0,0.0,0.0
-Pechuga de pollo sin piel,Admin,Generic,Proteinas,23.0,1.3,0.0,0.0,0.0,0.0
-Muslo de pollo sin piel,Admin,Generic,Proteinas,28.0,6.0,0.0,0.0,0.0,0.0
-Jamón Viande,Admin,Generic,Proteinas,44.0,11.0,44.0,0.0,0.0,0.0
-Aceite de girasol,Admin,Generic,Grasas,0.0,100.0,0.0,0.0,0.0,0.0
-Aceite de oliva extra virgen,Admin,Generic,Grasas,0.0,100.0,0.0,0.0,0.0,0.0
-Nueces (natural),Admin,Generic,Grasas,15.0,65.0,14.0,6.5,0.0,0.0
-Maní (natural),Admin,Generic,Grasas,26.0,50.0,16.0,8.5,0.0,0.0
-Almendras (natural),Admin,Generic,Grasas,21.0,50.0,19.0,12.0,0.0,0.0
-Anacardo (natural),Admin,Generic,Grasas,22.0,48.0,19.0,3.5,0.0,0.0
-Aceitunas,Admin,Generic,Grasas,1.0,11.0,5.5,3.0,0.0,0.0
-aguacate,Admin,Generic,Grasas,2.0,15.0,8.5,6.5,0.0,0.0
-Semillas de chía,Admin,Generic,Grasas,22.0,34.0,2.5,30.0,0.0,0.0
-Semillas de girasol,Admin,Generic,Grasas,16.0,25.0,47.0,8.0,0.0,0.0
-Semillas de sésamo,Admin,Generic,Grasas,18.0,50.0,23.5,12.0,0.0,0.0
-Arroz blanco,Admin,Generic,Carbohidratos,6.5,1.0,78.0,0.0,0.0,0.0
-Arroz integral,Admin,Generic,Carbohidratos,7.5,2.7,76.0,2.0,0.0,0.0
-Pasta ,Admin,Generic,Carbohidratos,12.0,1.5,72.0,3.0,0.0,0.0
-Pasta integral ,Admin,Generic,Carbohidratos,12.0,2.0,65.0,7.0,0.0,0.0
-Pan blanco tajado,Admin,Generic,Carbohidratos,7.0,2.5,48.0,2.5,0.0,0.0
-Pan integral tajado,Admin,Generic,Carbohidratos,9.5,4.5,46.0,7.0,0.0,0.0
-Papa ,Admin,Generic,Carbohidratos,2.0,0.0,17.5,2.0,0.0,0.0
-Platáno verde,Admin,Generic,Carbohidratos,1.0,0.0,23.0,2.5,0.0,0.0
-Platáno maduro,Admin,Generic,Carbohidratos,1.5,0.0,32.0,2.5,0.0,0.0
-Yuca,Admin,Generic,Carbohidratos,1.5,0.0,38.0,4.0,0.0,0.0
-Arepa,Admin,Generic,Carbohidratos,3.8,2.0,32.5,6.5,0.0,0.0
-Arepa de choclo,Admin,Generic,Carbohidratos,11.0,6.0,32.5,5.0,0.0,0.0
-Maíz dulce,Admin,Generic,Carbohidratos,3.0,1.0,19.0,3.0,0.0,0.0
-Avena,Admin,Generic,Carbohidratos,15.0,7.0,66.0,10.0,0.0,0.0
-Harina de trigo,Admin,Generic,Carbohidratos,10.0,1.0,71.0,3.0,0.0,0.0
-Harina de trigo integral,Admin,Generic,Carbohidratos,13.5,2.0,72.0,12.0,0.0,0.0
-Harina de maíz,Admin,Generic,Carbohidratos,8.0,2.5,70.0,8.0,0.0,0.0
-Harina de maíz integral,Admin,Generic,Carbohidratos,8.0,3.0,66.0,9.5,0.0,0.0
-Harina de arroz,Admin,Generic,Carbohidratos,7.0,1.0,80.0,2.0,0.0,0.0
-Leche entera,Admin,Generic,Lacteos,3.3,3.3,4.5,0.0,0.0,0.0
-Leche deslactosada,Admin,Generic,Lacteos,3.3,3.3,4.5,0.0,0.0,0.0
-Leche semidesnatada,Admin,Generic,Lacteos,3.3,1.5,5.0,0.0,0.0,0.0
-Leche desnatada,Admin,Generic,Lacteos,3.3,0.5,5.0,0.0,0.0,0.0
-Kumis,Admin,Generic,Lacteos,2.5,3.0,14.0,0.0,0.0,0.0
-Yogurt de frutas (entero),Admin,Generic,Lacteos,4.0,3.0,18.0,0.0,0.0,0.0
-Yogurt de frutas (desnatado),Admin,Generic,Lacteos,4.5,0.0,19.0,0.0,0.0,0.0
-Quesso parmesano rayado,Admin,Generic,Lacteos,38.0,29.0,4.0,0.0,0.0,0.0
-Queso cheddar,Admin,Generic,Lacteos,25.0,33.0,2.0,0.0,0.0,0.0
-Queso mozzarella,Admin,Generic,Lacteos,26.0,20.0,4.0,0.0,0.0,0.0
-Quesito,Admin,Generic,Lacteos,17.0,23.0,13.0,0.0,0.0,0.0
-Cuajada ,Admin,Generic,Lacteos,5.0,5.0,6.0,0.0,0.0,0.0
-Quesos crema,Admin,Generic,Lacteos,7.5,35.0,3.0,0.0,0.0,0.0
-Queso crema (semidesnatado),Admin,Generic,Lacteos,10.5,18.0,7.0,0.0,0.0,0.0
-Queso crema desnatado TAEQ,Admin,Generic,Lacteos,20.0,0.0,6.7,0.0,0.0,0.0
-Fríjol pinto,Admin,Generic,Leguminosas,21.0,1.0,62.0,15.0,0.0,0.0
-Fríjol blanco,Admin,Generic,Leguminosas,22.0,1.5,60.0,15.0,0.0,0.0
-Fríjol negro,Admin,Generic,Leguminosas,21.0,1.5,62.0,15.0,0.0,0.0
-Garbanzo,Admin,Generic,Leguminosas,19.0,6.0,50.0,14.0,0.0,0.0
-Lenteja,Admin,Generic,Leguminosas,23.0,1.5,50.0,10.0,0.0,0.0
-Arveja,Admin,Generic,Leguminosas,22.0,1.0,63.0,20.0,0.0,0.0
-Soja texturizada (carve),Admin,Generic,Leguminosas,48.0,1.0,40.0,16.0,0.0,0.0
-Harina de soja,Admin,Generic,Leguminosas,38.0,20.0,32.0,9.5,0.0,0.0
-Harina de garbanzo,Admin,Generic,Leguminosas,22.5,7.0,58.0,11.0,0.0,0.0
-Harina de lenteja,Admin,Generic,Leguminosas,27.0,2.5,54.0,5.0,0.0,0.0
-Salsa de tomate (ketchup) Heinz,Admin,Generic,Salsa y aderezos,1.2,0.1,23.0,0.0,0.0,0.0
-Mayonesa Heinz,Admin,Generic,Salsa y aderezos,0.8,70.0,3.0,0.0,0.0,0.0
-Mayonesa leigera Heinz,Admin,Generic,Salsa y aderezos,0.6,26.0,8.0,0.0,0.0,0.0
-Mostaza Heinz,Admin,Generic,Salsa y aderezos,5.0,0.6,4.0,0.0,0.0,0.0
-Verdura,Admin,Generic,Verduras,2.0,0.0,7.0,2.0,0.0,0.0
-Banano,Admin,Generic,Frutas,1.0,0.0,22.0,2.5,0.0,0.0
-Fresas,Admin,Generic,Frutas,0.7,0.0,7.5,2.0,0.0,0.0
-Sandía,Admin,Generic,Frutas,0.6,0.0,7.5,0.0,0.0,0.0
-Papaya,Admin,Generic,Frutas,0.6,0.0,10.0,2.0,0.0,0.0
-Manzana,Admin,Generic,Frutas,0.2,0.0,14.0,2.5,0.0,0.0
-Pera,Admin,Generic,Frutas,0.2,0.0,15.5,3.0,0.0,0.0
-Melón,Admin,Generic,Frutas,0.8,0.0,8.0,1.0,0.0,0.0
-Naranja,Admin,Generic,Frutas,1.0,0.0,12.0,2.5,0.0,0.0
-Mandarina,Admin,Generic,Frutas,0.5,0.0,9.0,1.3,0.0,0.0
-Kiwi,Admin,Generic,Frutas,1.1,0.5,14.5,3.0,0.0,0.0
-Lulo,Admin,Generic,Frutas,0.8,0.0,6.0,1.2,0.0,0.0
-Mora,Admin,Generic,Frutas,1.4,0.5,9.5,5.3,0.0,0.0
-Arándanos,Admin,Generic,Frutas,0.8,0.3,14.5,2.5,0.0,0.0
-Durazno,Admin,Generic,Frutas,0.9,0.2,9.5,1.5,0.0,0.0
-Guayaba,Admin,Generic,Frutas,2.5,0.9,14.3,5.5,0.0,0.0
-Piña,Admin,Generic,Frutas,0.5,0.0,13.0,1.5,0.0,0.0
+Lomo de cerdo magro,Admin,Generic,Proteinas,21.0,3.5,0.0,0.0,0.0,115.5
+Lomo de res magro,Admin,Generic,Proteinas,21.0,8.8,0.0,0.0,0.0,163.2
+Tilapia,Admin,Generic,Proteinas,20.0,1.7,0.0,0.0,0.0,95.3
+Trucha,Admin,Generic,Proteinas,19.0,6.0,0.0,0.0,0.0,130.0
+Atún en agua (lata),Admin,Generic,Proteinas,25.5,1.0,0.0,0.0,0.0,111.0
+Filete de atún ,Admin,Generic,Proteinas,26.0,6.0,0.0,0.0,0.0,158.0
+Filete de salmón,Admin,Generic,Proteinas,22.0,7.0,0.0,0.0,0.0,151.0
+Huevo ,Admin,Generic,Proteinas,12.5,10.0,0.0,0.0,0.0,140.0
+Pechuga de pollo sin piel,Admin,Generic,Proteinas,23.0,1.3,0.0,0.0,0.0,103.7
+Muslo de pollo sin piel,Admin,Generic,Proteinas,28.0,6.0,0.0,0.0,0.0,166.0
+Jamón Viande,Admin,Generic,Proteinas,44.0,11.0,44.0,0.0,0.0,451.0
+Aceite de girasol,Admin,Generic,Grasas,0.0,100.0,0.0,0.0,0.0,900.0
+Aceite de oliva extra virgen,Admin,Generic,Grasas,0.0,100.0,0.0,0.0,0.0,900.0
+Nueces (natural),Admin,Generic,Grasas,15.0,65.0,14.0,6.5,0.0,701.0
+Maní (natural),Admin,Generic,Grasas,26.0,50.0,16.0,8.5,0.0,618.0
+Almendras (natural),Admin,Generic,Grasas,21.0,50.0,19.0,12.0,0.0,610.0
+Anacardo (natural),Admin,Generic,Grasas,22.0,48.0,19.0,3.5,0.0,596.0
+Aceitunas,Admin,Generic,Grasas,1.0,11.0,5.5,3.0,0.0,125.0
+aguacate,Admin,Generic,Grasas,2.0,15.0,8.5,6.5,0.0,177.0
+Semillas de chía,Admin,Generic,Grasas,22.0,34.0,2.5,30.0,0.0,404.0
+Semillas de girasol,Admin,Generic,Grasas,16.0,25.0,47.0,8.0,0.0,477.0
+Semillas de sésamo,Admin,Generic,Grasas,18.0,50.0,23.5,12.0,0.0,616.0
+Arroz blanco,Admin,Generic,Carbohidratos,6.5,1.0,78.0,0.0,0.0,347.0
+Arroz integral,Admin,Generic,Carbohidratos,7.5,2.7,76.0,2.0,0.0,358.3
+Pasta ,Admin,Generic,Carbohidratos,12.0,1.5,72.0,3.0,0.0,349.5
+Pasta integral ,Admin,Generic,Carbohidratos,12.0,2.0,65.0,7.0,0.0,326.0
+Pan blanco tajado,Admin,Generic,Carbohidratos,7.0,2.5,48.0,2.5,0.0,242.5
+Pan integral tajado,Admin,Generic,Carbohidratos,9.5,4.5,46.0,7.0,0.0,262.5
+Papa ,Admin,Generic,Carbohidratos,2.0,0.0,17.5,2.0,0.0,78.0
+Platáno verde,Admin,Generic,Carbohidratos,1.0,0.0,23.0,2.5,0.0,96.0
+Platáno maduro,Admin,Generic,Carbohidratos,1.5,0.0,32.0,2.5,0.0,134.0
+Yuca,Admin,Generic,Carbohidratos,1.5,0.0,38.0,4.0,0.0,158.0
+Arepa,Admin,Generic,Carbohidratos,3.8,2.0,32.5,6.5,0.0,163.0
+Arepa de choclo,Admin,Generic,Carbohidratos,11.0,6.0,32.5,5.0,0.0,228.0
+Maíz dulce,Admin,Generic,Carbohidratos,3.0,1.0,19.0,3.0,0.0,97.0
+Avena,Admin,Generic,Carbohidratos,15.0,7.0,66.0,10.0,0.0,387.0
+Harina de trigo,Admin,Generic,Carbohidratos,10.0,1.0,71.0,3.0,0.0,333.0
+Harina de trigo integral,Admin,Generic,Carbohidratos,13.5,2.0,72.0,12.0,0.0,360.0
+Harina de maíz,Admin,Generic,Carbohidratos,8.0,2.5,70.0,8.0,0.0,334.5
+Harina de maíz integral,Admin,Generic,Carbohidratos,8.0,3.0,66.0,9.5,0.0,323.0
+Harina de arroz,Admin,Generic,Carbohidratos,7.0,1.0,80.0,2.0,0.0,357.0
+Leche entera,Admin,Generic,Lacteos,3.3,3.3,4.5,0.0,0.0,60.9
+Leche deslactosada,Admin,Generic,Lacteos,3.3,3.3,4.5,0.0,0.0,60.9
+Leche semidesnatada,Admin,Generic,Lacteos,3.3,1.5,5.0,0.0,0.0,46.7
+Leche desnatada,Admin,Generic,Lacteos,3.3,0.5,5.0,0.0,0.0,37.7
+Kumis,Admin,Generic,Lacteos,2.5,3.0,14.0,0.0,0.0,93.0
+Yogurt de frutas (entero),Admin,Generic,Lacteos,4.0,3.0,18.0,0.0,0.0,115.0
+Yogurt de frutas (desnatado),Admin,Generic,Lacteos,4.5,0.0,19.0,0.0,0.0,94.0
+Quesso parmesano rayado,Admin,Generic,Lacteos,38.0,29.0,4.0,0.0,0.0,429.0
+Queso cheddar,Admin,Generic,Lacteos,25.0,33.0,2.0,0.0,0.0,405.0
+Queso mozzarella,Admin,Generic,Lacteos,26.0,20.0,4.0,0.0,0.0,300.0
+Quesito,Admin,Generic,Lacteos,17.0,23.0,13.0,0.0,0.0,327.0
+Cuajada ,Admin,Generic,Lacteos,5.0,5.0,6.0,0.0,0.0,89.0
+Quesos crema,Admin,Generic,Lacteos,7.5,35.0,3.0,0.0,0.0,357.0
+Queso crema (semidesnatado),Admin,Generic,Lacteos,10.5,18.0,7.0,0.0,0.0,232.0
+Queso crema desnatado TAEQ,Admin,Generic,Lacteos,20.0,0.0,6.7,0.0,0.0,106.8
+Fríjol pinto,Admin,Generic,Leguminosas,21.0,1.0,62.0,15.0,0.0,341.0
+Fríjol blanco,Admin,Generic,Leguminosas,22.0,1.5,60.0,15.0,0.0,341.5
+Fríjol negro,Admin,Generic,Leguminosas,21.0,1.5,62.0,15.0,0.0,345.5
+Garbanzo,Admin,Generic,Leguminosas,19.0,6.0,50.0,14.0,0.0,330.0
+Lenteja,Admin,Generic,Leguminosas,23.0,1.5,50.0,10.0,0.0,305.5
+Arveja,Admin,Generic,Leguminosas,22.0,1.0,63.0,20.0,0.0,349.0
+Soja texturizada (carve),Admin,Generic,Leguminosas,48.0,1.0,40.0,16.0,0.0,361.0
+Harina de soja,Admin,Generic,Leguminosas,38.0,20.0,32.0,9.5,0.0,460.0
+Harina de garbanzo,Admin,Generic,Leguminosas,22.5,7.0,58.0,11.0,0.0,385.0
+Harina de lenteja,Admin,Generic,Leguminosas,27.0,2.5,54.0,5.0,0.0,346.5
+Salsa de tomate (ketchup) Heinz,Admin,Generic,Salsa y aderezos,1.2,0.1,23.0,0.0,0.0,97.7
+Mayonesa Heinz,Admin,Generic,Salsa y aderezos,0.8,70.0,3.0,0.0,0.0,645.2
+Mayonesa leigera Heinz,Admin,Generic,Salsa y aderezos,0.6,26.0,8.0,0.0,0.0,268.4
+Mostaza Heinz,Admin,Generic,Salsa y aderezos,5.0,0.6,4.0,0.0,0.0,41.2
+Verdura,Admin,Generic,Verduras,2.0,0.0,7.0,2.0,0.0,36.0
+Banano,Admin,Generic,Frutas,1.0,0.0,22.0,2.5,0.0,92.0
+Fresas,Admin,Generic,Frutas,0.7,0.0,7.5,2.0,0.0,32.8
+Sandía,Admin,Generic,Frutas,0.6,0.0,7.5,0.0,0.0,32.4
+Papaya,Admin,Generic,Frutas,0.6,0.0,10.0,2.0,0.0,42.4
+Manzana,Admin,Generic,Frutas,0.2,0.0,14.0,2.5,0.0,56.8
+Pera,Admin,Generic,Frutas,0.2,0.0,15.5,3.0,0.0,62.8
+Melón,Admin,Generic,Frutas,0.8,0.0,8.0,1.0,0.0,35.2
+Naranja,Admin,Generic,Frutas,1.0,0.0,12.0,2.5,0.0,52.0
+Mandarina,Admin,Generic,Frutas,0.5,0.0,9.0,1.3,0.0,38.0
+Kiwi,Admin,Generic,Frutas,1.1,0.5,14.5,3.0,0.0,66.9
+Lulo,Admin,Generic,Frutas,0.8,0.0,6.0,1.2,0.0,27.2
+Mora,Admin,Generic,Frutas,1.4,0.5,9.5,5.3,0.0,48.1
+Arándanos,Admin,Generic,Frutas,0.8,0.3,14.5,2.5,0.0,63.7
+Durazno,Admin,Generic,Frutas,0.9,0.2,9.5,1.5,0.0,43.4
+Guayaba,Admin,Generic,Frutas,2.5,0.9,14.3,5.5,0.0,75.3
+Piña,Admin,Generic,Frutas,0.5,0.0,13.0,1.5,0.0,54.0

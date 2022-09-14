@@ -1,17 +1,14 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 
 # Core App import
-from core.models import Excercises
-
-
-# User App import
-from .forms import UserForm
-
+from core.models import Exercise
 
 # @login_required
 def user_view(request):
     return (render(request, "user.html", {
-        'excercises': enumerate(list(Excercises.objects.all()))
+        'exercises': enumerate(list(Exercise.objects.all()))
     }))
 
 

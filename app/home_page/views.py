@@ -5,9 +5,10 @@ from django.shortcuts import render, redirect
 
 def home_view(request):
     """ Home page view method definition """
-    return (render(request, "home.html", data))
+    return (render(request, "home.html"))
 
-def logina_view(request):
+
+def login_view(request):
     """Login view"""
     if request.method == 'POST':
         username = request.POST['username']

@@ -1,11 +1,11 @@
 from typing import Union
 from django.core.management.base import BaseCommand
-from core.models import Excercises, Food
+from core.models import Exercise, Food
 import csv
 import os
 
 MODEL_MAPPER = {
-    'excercises': Excercises,
+    'exercise': Exercise,
     'food': Food,
 }
 
@@ -39,7 +39,7 @@ class Command(BaseCommand):
             print(f"💔 \033[91m{e}\033[m 💔\n")
             raise e
 
-    def get_model(self, file: str) -> Union[Excercises, Food]:
+    def get_model(self, file: str) -> Union[Exercise, Food]:
         file_name = file.split('.csv')[0]
         try:
             model = MODEL_MAPPER[file_name]
@@ -52,7 +52,7 @@ class Command(BaseCommand):
             print(msg)
             raise e
 
-    def insert_data(self, data: dict, model: Union[Excercises, Food]) -> None:
+    def insert_data(self, data: dict, model: Union[Exercise, Food]) -> None:
         """Insert data from csv file to exercise table"""
         for row in data:
             instance = model(**row)
