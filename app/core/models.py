@@ -17,6 +17,9 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+# Variable for Macronutrients settings
+MACRO_FIELDS = {'max_digits': 4, 'decimal_places': 1, 'default': Decimal(0.0)}
+
 # Validators for adherence field
 PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 
@@ -28,8 +31,6 @@ SEX_CHOICES = [
 # User creation and Management ---------
 
 # Handles user and superuser management and creation.
-
-
 class UserManager(BaseUserManager):
     """Manager for users."""
 
@@ -55,64 +56,39 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
-    id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    signup_time = models.DateTimeField(auto_now=True)
-    last_login = models.DateTimeField(auto_now=True)
-    # birth_date = models.DateField(default=None, blank=True, null=True)
+    signup_time = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now_add=True)
+    birth_date = models.DateField(default=None, blank=True, null=True)
 
-    # city = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
     # location = PlainLocationField(based_fields=['city'],
     #                               initial='4.712520,-74.045487')
     sex = models.CharField(max_length=30, choices=SEX_CHOICES)
 
     available_workout_days = models.CharField(max_length=10)
-    # meals_per_day = models.PositiveSmallIntegerField()
+    meals_per_day = models.PositiveSmallIntegerField()
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
 
 
-class ProgramType(models.Model):
-    """
-    Programs available
-    """
-
-    id = models.AutoField(primary_key=True)
-    program_name = models.CharField(max_length=255)
-    sex = models.CharField(max_length=30, choices=SEX_CHOICES)
-    available_workout_days = models.CharField(max_length=10)
-
-
-class ProgramTypeUser(models.Model):
-    """
-    Bridge between user and programs
-    """
-
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-    )
-    program_type = models.ForeignKey(ProgramType, on_delete=models.CASCADE)
-
-
 # User measurements ---------
-
-class AntrhopometricHistory(models.Model):
+class AnthropometricHistory(models.Model):
     """
     Defines Antrhopometric history records for a user
     """
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
+        related_name='anthropometrics'
     )
-    date = models.DateField(auto_now=True)
+    date = models.DateField(auto_now_add=True)
     height = models.FloatField()
     weight = models.FloatField()
     neck = models.FloatField()
@@ -121,15 +97,14 @@ class AntrhopometricHistory(models.Model):
 
 
 # User's food and nutrition ---------
-
 class NutritionalHistory(models.Model):
     """Stores nutritional values history."""
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
+        related_name='nutritional_histories'
     )
-    date = models.DateField(auto_now=True)
+    date = models.DateField(auto_now_add=True)
     carbohydrates_real = models.IntegerField(blank=True, null=True)
     proteins_real = models.IntegerField(blank=True, null=True)
     fats_real = models.IntegerField(blank=True, null=True)
@@ -145,16 +120,8 @@ class NutritionalHistory(models.Model):
     carbohydrates_goal = models.IntegerField(blank=True, null=True)
 
 
-# Validators for adherence field
-PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
-
-# Variable for Macronutrients settings
-MACRO_FIELDS = {'max_digits': 4, 'decimal_places': 1, 'default': Decimal(0.0)}
-
-
 class Food(models.Model):
     """Defines nutritional values of food."""
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     enter_by = models.CharField(max_length=5)
     brand = models.CharField(max_length=255)
@@ -171,70 +138,22 @@ class Ingestion(models.Model):
     """
     Defines ingestion history records for a user
     """
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
+        related_name='ingestions'
     )
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True)
     meal_number = models.PositiveSmallIntegerField()
     value = models.DecimalField(max_digits=5, decimal_places=2)
-
-
-class FoodIngestion(models.Model):
-    """
-    Defines a bridge table relationship between Food and ingestion table
-    """
-    food_id = models.ForeignKey(Food, on_delete=models.CASCADE)
-    ingestion_id = models.ForeignKey(Ingestion, on_delete=models.CASCADE)
-
-
-class NutritionHistory(models.Model):
-    """
-    Defines nutrition history records for a user
-    """
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-    )
-    date = models.DateTimeField(auto_now=True)
-    carbohydrates_real = models.DecimalField(max_digits=5, decimal_places=2)
-    proteins_real = models.DecimalField(max_digits=5, decimal_places=2)
-    fats_real = models.DecimalField(max_digits=5, decimal_places=2)
-    fibers_real = models.DecimalField(max_digits=5, decimal_places=2)
-    sodium_real = models.DecimalField(max_digits=5, decimal_places=2)
-    calories_real = models.DecimalField(max_digits=5, decimal_places=2)
-    carbohydrates_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    proteins_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    fats_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    fibers_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    sodium_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    calories_goal = models.DecimalField(max_digits=5, decimal_places=2)
-    adherence = models.DecimalField(
-        max_digits=3,
-        decimal_places=1,
-        default=Decimal(0),
-        validators=PERCENTAGE_VALIDATOR,
-    )
+    foods = models.ManyToManyField(Food)
 
 
 # Workout data ---------
-
-class Workouts(models.Model):
-    """
-    Workouts available
-    """
-    id = models.AutoField(primary_key=True)
-    workout_type = models.CharField(max_length=255)
-    program_type_id = models.IntegerField(blank=True, null=True)
-
-
-class Excercises(models.Model):
+class Exercise(models.Model):
     """
     Different types of exercises to perform
     """
-    id = models.AutoField(primary_key=True)
     exercise_name = models.CharField(max_length=255)
     target_muscle = models.CharField(max_length=255)
     workout_type = models.CharField(max_length=255)
@@ -243,31 +162,40 @@ class Excercises(models.Model):
     # storage=None, max_length=100, **options)
 
 
-class WorkoutHistory(models.Model):
+class Workout(models.Model):
     """
-    Collects Workout history records for a user
+    Workouts available
     """
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+    workout_type = models.CharField(max_length=255)
+    exercises = models.ManyToManyField(Exercise, related_name='workouts')
+
+
+class ProgramType(models.Model):
+    """
+    Programs available
+    """
+    users = models.ForeignKey(
+        User,
         on_delete=models.CASCADE,
+        related_name='program_types'
     )
-    adherence = models.DecimalField(
-        max_digits=3,
-        decimal_places=1,
-        default=Decimal(0),
-        validators=PERCENTAGE_VALIDATOR,
+    workouts = models.ManyToManyField(
+        Workout, 
+        related_name='programs',
     )
+    program_name = models.CharField(max_length=255)
+    sex = models.CharField(max_length=30, choices=SEX_CHOICES)
+    available_workout_days = models.CharField(max_length=10)
 
 
-class ExerciseHistory(models.Model):
+class StrengthHistory(models.Model):
     """
     Collects exercise history records for a user
     """
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
+        related_name='sleep_histories'
     )
     exercise_name = models.CharField(max_length=255)
     reps_real = models.IntegerField(blank=True, null=True)
@@ -286,18 +214,41 @@ class ExerciseHistory(models.Model):
     )
 
 
-class ExerciseWorkoutHistory(models.Model):
+class CardioHistory(models.Model):
     """
-    Bridge between exercise and workout history
+    Collects exercise history records for a user
     """
-    exercise_history_id = models.ForeignKey(
-                                    ExerciseHistory,
-                                    on_delete=models.CASCADE,
-                                )
-    workout_history_id = models.ForeignKey(
-                                    WorkoutHistory,
-                                    on_delete=models.CASCADE,
-                                    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='cardio_histories'
+    )
+    exercise_name = models.CharField(max_length=255)
+    duration_real = models.IntegerField(blank=True, null=True)
+    active_rest_real = models.IntegerField(blank=True, null=True)
+    cicle_real = models.IntegerField(blank=True, null=True)
+    sprint_real = models.IntegerField(blank=True, null=True)
+    min_bpm_real = models.IntegerField(blank=True, null=True)
+    max_bpm_real = models.IntegerField(blank=True, null=True)
+    duration_goal = models.IntegerField(blank=True, null=True)
+    active_rest_goal = models.IntegerField(blank=True, null=True)
+    cicle_goal = models.IntegerField(blank=True, null=True)
+    sprint_goal = models.IntegerField(blank=True, null=True)
+    min_bpm_goal = models.IntegerField(blank=True, null=True)
+    max_bpm_goal = models.IntegerField(blank=True, null=True)
+
+
+class WorkoutHistory(models.Model):
+    """
+    Collects Workout history records for a user
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='workout_histories'
+    )
+    strength_exercises = models.ManyToManyField(StrengthHistory)
+    cardio_exercises = models.ManyToManyField(CardioHistory)
 
 
 # Evaluation section ---------
@@ -305,53 +256,39 @@ class Question(models.Model):
     """
     Workout evaluation history
     """
-    id = models.AutoField(primary_key=True)
-    question_name = models.CharField(max_length=255)
-    question_type = models.CharField(max_length=255)
+    question = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    frequency = models.CharField(max_length=255)
+    scale_name = models.CharField(max_length=255)
 
 
-class WorkoutEvalHistory(models.Model):
-    """
-    Workout evaluation history
-    """
-    id = models.AutoField(primary_key=True)
-    workout_id = models.ForeignKey(Workouts, on_delete=models.CASCADE)
-
-
-class EvaluationQuestion(models.Model):
+class WorkoutQuestionHistory(models.Model):
     """
     LIst of questions and score
     """
-    # where does evaluation id come from?
-    id = models.AutoField(primary_key=True)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    date = models.DateField(auto_now=True)
+    questions = models.ManyToManyField(Question, related_name='workout_question_histories')
+    date = models.DateField(auto_now_add=True)
     score = models.IntegerField(blank=True, null=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='workout_questions',
+    )
+    workouts = models.ManyToManyField(
+        Workout,
+    )
 
 
-class SleepQuestion(models.Model):
+class SleepQuestionHistory(models.Model):
     """
     Sleep questions
     """
-    # is this the right id...
-    id = models.AutoField(primary_key=True)
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    date = models.DateField(auto_now=True)
+    questions = models.ManyToManyField(Question, related_name='sleep_question_histories')
+    date = models.DateField(auto_now_add=True)
     score = models.IntegerField(blank=True, null=True)
-
-
-class SleepHistory(models.Model):
-    """
-    Sleep history
-    """
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
+        related_name='sleep_questions',
     )
-    sleep_question_id = models.ForeignKey(
-                            SleepQuestion,
-                            on_delete=models.CASCADE,
-                        )
-    date = models.DateField(auto_now=True)
-    score = models.IntegerField(blank=True, null=True)
+
