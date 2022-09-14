@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Core App import
-from core.models import Excercises
+from core.models import Exercise
 
 
 # User App import
@@ -17,5 +17,5 @@ def user_view(request):
 
     return (render(request, "user.html", {
         'form': form,
-        'excercises': enumerate(list(Excercises.objects.all()))
+        'exercises': enumerate(list(Exercise.objects.all()))
     }))
