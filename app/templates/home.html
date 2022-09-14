@@ -10,23 +10,83 @@
 
 
 {% block content %}
-<main class="main_home_page">
-    <section class="home_section_1">
-        <div>
-            <h1>Vita Training Systems</h1>
-            <p>"Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra suspendisse potenti nullam ac tortor! Adipiscing bibendum est ultricies integer quis auctor elit sed vulputate mi sit amet mauris?"</p>
-            <h2>Health As Performance</h2>
-        </div>
-        <div>
-            <img alt="Background1" type="image/jpg" src="{% static 'images/home_page_1.jpg' %}"/>
-        </div>
-    </section>
-    <section class="home_section_2">
-        <h2>Hello</h2>
-    </section>
-    <section class="home_section_3">
-        <h3>Hello</h3>
-    </section>
-</main>
+<header>
+    <div class="logo"><img alt="Vits Logo" type="image/svg" src="{% static 'images/vits.svg' %}"/></div>
+    <nav>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Login / Signup</a></li>
+    </nav>
+</header>
+<section class="hero">
+    <div class="background-image" style="background-image: url(static/images/hero.jpg);"></div>
+    <h1>Vita Training Systems</h1>
+    <h3>Health as performance.</h3>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn">Encuentra tu programa</a>
+</section>
 
+
+<section class="plans">
+    <h3 class="title">Programas</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
+    <hr>
+
+    <ul class="grid">
+        <li class="small" style="background-image: url(static/images/coast.jpg);"></li>
+        <li class="large" style="background-image: url(static/images/island.jpg);"></li>
+        <li class="large" style="background-image: url(static/images/balloon.jpg);"></li>
+        <li class="small" style="background-image: url(static/images/mountain.jpg);"></li>
+    </div>
+</section>
+
+
+<section class="features">
+    <h3 class="title">Features and services</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
+    <hr>
+
+    <ul class="grid">
+        <li>
+            <i class="fa fa-camera-retro"></i>
+            <h4>Photography</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
+        </li>
+        <li>
+            <i class="fa fa-cubes"></i>
+            <h4>Web Development</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
+        </li>
+        <li>
+            <i class="fa fa-newspaper-o"></i>
+            <h4>Content Editing</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices vitae pulvinar velit.</p>
+        </li>
+    </div>
+</section>
+
+
+<section class="reviews">
+    <h3 class="title">What others say:</h3>
+
+    <p class="quote">Mauris sit amet mauris a arcu eleifend ultricies eget ut dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+    <p class="author">— Patrick Farrell</p>
+
+    <p class="quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
+    <p class="author">— George Smith</p>
+
+    <p class="quote">Donec commodo dolor augue, vitae faucibus tortor tincidunt in. Aliquam vitae leo quis mi pulvinar ornare. Integer eu iaculis metus.</p>
+    <p class="author">— Kevin Blake</p>
+
+
+</section>
+
+
+<section class="contact">
+    <h3 class="title">Bienvenido a nuestra comunidad!</h3>
+    <p>Recibe GRATIS tips y herramientas para hacer tu vida más fácil!</p>
+    <hr>
+
+    <form>
+        <input type="email" placeholder="Email">
+        <a href="#" class="btn">Suscríbete</a>
+    </form>
+</section>
 {% endblock %}
