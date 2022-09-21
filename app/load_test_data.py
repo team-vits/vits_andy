@@ -21,6 +21,7 @@ MODERATE = 1.37
 ACTIVE = 1.5
 
 
+# Constant factors to calculate BMR
 SEX_FACTOR = {
     "M": 1,
     "F": 0,
@@ -177,7 +178,6 @@ def calculate_nutritional_data(user):
         "carbohydrates_real": carbohydrates_total_real,
         "fibers_real": fiber_total_real,
     }
-    print(nutrition_goals, nutrition_reals)
 
     NutritionalHistory.objects.create(
         **nutrition_goals,
