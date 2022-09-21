@@ -4,6 +4,8 @@ Database models.
 # import uuid
 # import os
 from decimal import Decimal
+from datetime import datetime, date
+import math
 
 # from location_field.models.plain import PlainLocationField
 
@@ -18,7 +20,7 @@ from django.contrib.auth.models import (
 )
 
 # Variable for Macronutrients settings
-MACRO_FIELDS = {'max_digits': 4, 'decimal_places': 1, 'default': Decimal(0.0)}
+MACRO_FIELDS = {"max_digits": 4, "decimal_places": 1, "default": Decimal(0.0)}
 
 # Validators for adherence field
 PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
@@ -38,7 +40,8 @@ class UserManager(BaseUserManager):
         """Creates, saves and returns a new user."""
         if not email:
             raise ValueError("User must have an email address.")
-        user = self.model(email=self.normalize_email(email), **extra_fields)
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
@@ -56,6 +59,16 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """User in the system."""
+    # Activity level
+    SEDENTARY = 1.2
+    MODERATE = 1.37
+    ACTIVE = 1.5
+    ACTIVITY_LEVEL = [
+        (SEDENTARY, 'Sedentary'),
+        (MODERATE, 'Moderate'),
+        (ACTIVE, 'Active'),
+    ]
+
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
 
@@ -71,11 +84,44 @@ class User(AbstractBaseUser, PermissionsMixin):
     sex = models.CharField(max_length=30, choices=SEX_CHOICES)
 
     available_workout_days = models.CharField(max_length=10)
-    meals_per_day = models.PositiveSmallIntegerField()
+    activity_level = models.FloatField(choices=ACTIVITY_LEVEL, null=True)
+    meals_per_day = models.PositiveSmallIntegerField(null=True)
 
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+
+
+    def get_age(self):
+        """Calculate age of the user"""
+
+        today = date.today()
+        birthdate_object = datetime.strptime(self.birth_date, '%Y-%m-%d').date()
+        age = today.year - birthdate_object.year - ((today.month, today.day) < (birthdate_object.month, birthdate_object.day))
+        return age
+
+    def get_body_fat(self):
+        """Get body fat of the user in kilograms"""
+        user_anthropometrics = self.anthropometrics.latest('date')
+        if self.sex == 'M':
+            BF_percent = (
+                495
+                / (
+                    1.0324
+                    - 0.19077 * math.log10(user_anthropometrics.waist - user_anthropometrics.neck)
+                    + 0.15456 * math.log10(user_anthropometrics.height)
+                )
+            ) - 450
+        else:
+            BF_percent = (
+            495
+            / (
+                1.29579
+                - 0.35004 * math.log10(user_anthropometrics.waist + user_anthropometrics.hip - user_anthropometrics.neck)
+                + 0.22100 * math.log10(user_anthropometrics.height)
+            )
+        ) - 450
+        return BF_percent * user_anthropometrics.weight
 
 
 # User measurements ---------
@@ -83,10 +129,9 @@ class AnthropometricHistory(models.Model):
     """
     Defines Antrhopometric history records for a user
     """
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='anthropometrics'
+        User, on_delete=models.CASCADE, related_name="anthropometrics"
     )
     date = models.DateField(auto_now_add=True)
     height = models.FloatField()
@@ -99,10 +144,9 @@ class AnthropometricHistory(models.Model):
 # User's food and nutrition ---------
 class NutritionalHistory(models.Model):
     """Stores nutritional values history."""
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='nutritional_histories'
+        User, on_delete=models.CASCADE, related_name="nutritional_histories"
     )
     date = models.DateField(auto_now_add=True)
     carbohydrates_real = models.IntegerField(blank=True, null=True)
@@ -122,6 +166,7 @@ class NutritionalHistory(models.Model):
 
 class Food(models.Model):
     """Defines nutritional values of food."""
+
     name = models.CharField(max_length=255)
     enter_by = models.CharField(max_length=5)
     brand = models.CharField(max_length=255)
@@ -138,15 +183,15 @@ class Ingestion(models.Model):
     """
     Defines ingestion history records for a user
     """
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='ingestions'
-    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ingestions")
     date = models.DateTimeField(auto_now_add=True)
     meal_number = models.PositiveSmallIntegerField()
+
+class IngestionByFood(models.Model):
+    ingestion = models.ForeignKey(Ingestion, on_delete=models.CASCADE)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=5, decimal_places=2)
-    foods = models.ManyToManyField(Food)
 
 
 # Workout data ---------
@@ -154,10 +199,11 @@ class Exercise(models.Model):
     """
     Different types of exercises to perform
     """
+
     exercise_name = models.CharField(max_length=255)
     target_muscle = models.CharField(max_length=255)
     workout_type = models.CharField(max_length=255)
-    video_link = models.CharField(max_length=255, default='')
+    video_link = models.CharField(max_length=255, default="")
     # FileField class FileField(upload_to='',
     # storage=None, max_length=100, **options)
 
@@ -166,36 +212,35 @@ class Workout(models.Model):
     """
     Workouts available
     """
+
     workout_type = models.CharField(max_length=255)
-    exercises = models.ManyToManyField(Exercise, related_name='workouts')
+    exercises = models.ManyToManyField(Exercise, related_name="workouts")
 
 
 class ProgramType(models.Model):
     """
     Programs available
     """
-    users = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='program_types'
+
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="program_types", null=True
     )
     workouts = models.ManyToManyField(
-        Workout, 
-        related_name='programs',
+        Workout,
+        related_name="programs",
     )
     program_name = models.CharField(max_length=255)
     sex = models.CharField(max_length=30, choices=SEX_CHOICES)
-    available_workout_days = models.CharField(max_length=10)
+    #available_workout_days = models.CharField(max_length=10)
 
 
 class StrengthHistory(models.Model):
     """
     Collects exercise history records for a user
     """
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='sleep_histories'
+        User, on_delete=models.CASCADE, related_name="sleep_histories"
     )
     exercise_name = models.CharField(max_length=255)
     reps_real = models.IntegerField(blank=True, null=True)
@@ -218,10 +263,9 @@ class CardioHistory(models.Model):
     """
     Collects exercise history records for a user
     """
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='cardio_histories'
+        User, on_delete=models.CASCADE, related_name="cardio_histories"
     )
     exercise_name = models.CharField(max_length=255)
     duration_real = models.IntegerField(blank=True, null=True)
@@ -242,10 +286,9 @@ class WorkoutHistory(models.Model):
     """
     Collects Workout history records for a user
     """
+
     user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='workout_histories'
+        User, on_delete=models.CASCADE, related_name="workout_histories"
     )
     strength_exercises = models.ManyToManyField(StrengthHistory)
     cardio_exercises = models.ManyToManyField(CardioHistory)
@@ -256,6 +299,7 @@ class Question(models.Model):
     """
     Workout evaluation history
     """
+
     question = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     frequency = models.CharField(max_length=255)
@@ -266,13 +310,16 @@ class WorkoutQuestionHistory(models.Model):
     """
     LIst of questions and score
     """
-    questions = models.ManyToManyField(Question, related_name='workout_question_histories')
+
+    questions = models.ManyToManyField(
+        Question, related_name="workout_question_histories"
+    )
     date = models.DateField(auto_now_add=True)
     score = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='workout_questions',
+        related_name="workout_questions",
     )
     workouts = models.ManyToManyField(
         Workout,
@@ -283,12 +330,14 @@ class SleepQuestionHistory(models.Model):
     """
     Sleep questions
     """
-    questions = models.ManyToManyField(Question, related_name='sleep_question_histories')
+
+    questions = models.ManyToManyField(
+        Question, related_name="sleep_question_histories"
+    )
     date = models.DateField(auto_now_add=True)
     score = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='sleep_questions',
+        related_name="sleep_questions",
     )
-
