@@ -12,8 +12,11 @@
         <!-- REMOVE IN PRODUCCTION -->
         <script src="http://localhost:35729/livereload.js"></script>
 
-        <title>Vits | {% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <title>Vita Training Systems</title>
+        <link rel="icon"href="{% static 'favicon.ico' %}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'css/common.css' %}">
         {% block static %}
         {% endblock %}
@@ -23,7 +26,6 @@
     </head>
 
     <body id="main_body">
-        {% include 'base/top-nav-bar.html' %}
         <div class="main_container">
             {% block content %}
             {% endblock %}
